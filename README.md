@@ -2,22 +2,21 @@
 
 ## usersテーブル
 
-| column                  | Type   | Option      |
-| ----------------------- | ------ | ----------- |
-| last_name               | string | null: false |
-| first_name              | string | null: false |
-| furigana_last_name      | string | null: false |
-| furigana_first_name     | string | null: false | 
-| email                   | string | null: false |
-| password                | string | null: false |
-| password_confirmation   | string | null: false |
-| encrypted_password      | string | null: false |
-| dob                     | date   | null: false |
+| column                  | Type   | Option                    |
+| ----------------------- | ------ | ------------------------- |
+| last_name               | string | null: false               |
+| first_name              | string | null: false               |
+| furigana_last_name      | string | null: false               |
+| furigana_first_name     | string | null: false               | 
+| email                   | string | null: false, unique: true |
+| password                | string | null: false               |
+| password_confirmation   | string | null: false               |
+| encrypted_password      | string | null: false               |
+| dob                     | date   | null: false               |
 
 ### Association
 
 - has_many :items
-- has_many :purchase
 - has_one :address
 
 ## itemsテーブル
@@ -25,7 +24,7 @@
 | Column           | Type        | Option                         |
 | ---------------- | ----------- | ------------------------------ |
 | seller_name      | string      | null: false                    |
-| price            | string      | null: false
+| price            | string      | null: false                    |
 | category_id      | integer     | null: false                    |
 | item_state       | string      | null: false                    |
 | shipping_charges | string      | null: false                    |
@@ -35,9 +34,8 @@
 
 ### Association
 
-- belongs_to :users
-- has_many :addresses_items
-- has_one :address, through: :addresses_items
+- belongs_to :user
+- has_one :addresses_item
 
 
 ## addressesテーブル
