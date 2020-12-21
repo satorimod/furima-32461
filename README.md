@@ -31,7 +31,6 @@
 | shipping_area_id    | integer     | null: false                    |
 | shipping_date_id    | integer     | null: false                    |
 | user                | references  | null: false, foreign_key: true |
-| addresses_item      | references  | null: false, foreign_key: true |
 
 ### Association
 
@@ -41,15 +40,15 @@
 
 ## addressesテーブル
 
-| Column         | Type    | Option      |
-| -------------- | ------- | ------------|
-| postal         | string  | null: false |
-| prefecture_id  | integer | null: false |
-| municipality   | string  | null: false |
-| address        | string  | null: false |
-| building       | string  |             |
-| phone          | string  | null: false |
-|
+| Column              | Type        | Option                         |
+| ------------------- | ----------- | ------------------------------ |
+| postal              | string      | null: false                    |
+| prefecture_id       | integer     | null: false                    |
+| municipality        | string      | null: false                    |
+| address             | string      | null: false                    |
+| building            | string      |                                |
+| phone               | string      | null: false                    |
+| addresses_item      | references  | null: false, foreign_key: true |
 
 ### Association
 
