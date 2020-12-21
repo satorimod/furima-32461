@@ -16,14 +16,14 @@
 ### Association
 
 - has_many :items
-- has_one :address_item
+- has_many :address_items
 
 ## itemsテーブル
 
 | Column              | Type        | Option                         |
 | ------------------- | ----------- | ------------------------------ |
-| item_name           | string      | null: false                    |
-| item_explanation    | text        | null: false                    |
+| name                | string      | null: false                    |
+| explanation         | text        | null: false                    |
 | price               | integer     | null: false                    |
 | category_id         | integer     | null: false                    |
 | item_state_id       | integer     | null: false                    |
@@ -31,6 +31,7 @@
 | shipping_area_id    | integer     | null: false                    |
 | shipping_date_id    | integer     | null: false                    |
 | user                | references  | null: false, foreign_key: true |
+| addresses_item      | references  | null: false, foreign_key: true |
 
 ### Association
 
@@ -40,14 +41,15 @@
 
 ## addressesテーブル
 
-| Column         | Type    | Option                         |
-| -------------- | ------- | ------------------------------ |
-| postal         | string  | null: false                    |
-| prefecture_id  | integer | null: false                    |
-| municipality   | string  | null: false                    |
-| address        | string  | null: false, foreign_key: true |
-| building       | string  | foreign_key: true              |
-| phone          | string  | null: false, foreign_key: true |
+| Column         | Type    | Option      |
+| -------------- | ------- | ------------|
+| postal         | string  | null: false |
+| prefecture_id  | integer | null: false |
+| municipality   | string  | null: false |
+| address        | string  | null: false |
+| building       | string  |             |
+| phone          | string  | null: false |
+|
 
 ### Association
 
@@ -55,10 +57,10 @@
 
 ## address_itemsテーブル
 
-| Column     | Type    | option                         |
-| ---------- | ------- | ------------------------------ |
-| user_id    | integer | null: false, foreign_key: true |
-| item_id    | integer | null: false, foreign_key: true |
+| Column     | Type       | option                         |
+| ---------- | ---------- | ------------------------------ |
+| user       | references | null: false, foreign_key: true |
+| item       | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :item
