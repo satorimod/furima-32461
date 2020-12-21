@@ -16,12 +16,13 @@
 ### Association
 
 - has_many :items
+- has_one :address_item
 
 ## itemsテーブル
 
 | Column              | Type        | Option                         |
 | ------------------- | ----------- | ------------------------------ |
-| item_name           | integer     | null: false                    |
+| item_name           | string      | null: false                    |
 | item_explanation    | text        | null: false                    |
 | price               | integer     | null: false                    |
 | category_id         | integer     | null: false                    |
@@ -39,18 +40,17 @@
 
 ## addressesテーブル
 
-| Column         | Type    | Option      |
-| -------------- | ------- | ----------- |
-| postal         | string  | null: false |
-| prefecture_id  | integer | null: false |
-| municipality   | string  | null: false |
-| address        | string  | null: false |
-| building       | string  |             |
-| phone          | string  | null: false |
+| Column         | Type    | Option                         |
+| -------------- | ------- | ------------------------------ |
+| postal         | string  | null: false                    |
+| prefecture_id  | integer | null: false                    |
+| municipality   | string  | null: false                    |
+| address        | string  | null: false, foreign_key: true |
+| building       | string  | foreign_key: true              |
+| phone          | string  | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
 - belongs_to :addresses_item
 
 ## address_itemsテーブル
