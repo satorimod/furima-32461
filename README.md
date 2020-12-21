@@ -4,12 +4,14 @@
 
 | column                  | Type   | Option      |
 | ----------------------- | ------ | ----------- |
-| buyer_name              | string | null: false |
+| last_name               | string | null: false |
+| first_name              | string | null: false |
+| furigana_last_name      | string | null: false |
+| furigana_first_name     | string | null: false | 
 | email                   | string | null: false |
 | password                | string | null: false |
 | password_confirmation   | string | null: false |
-| chinese_characters_name | string | null: false |
-| katakana_name           | string | null: false |
+| encrypted_password      | string | null: false |
 | dob                     | date   | null: false |
 
 ### Association
@@ -20,60 +22,48 @@
 
 ## itemsテーブル
 
-| Column           | Type    | Option                         |
-| ---------------- | ------- | ------------------------------ |
-| seller_name      | string  | null: false                    |
-| category         | string  | null: false                    |
-| item_state       | string  | null: false                    |
-| shipping_charges | string  | null: false                    |
-| shipping_area    | string  | null: false                    |
-| shipping_date    | string  | null: false                    |
-| user_id          | integer | null: false, foreign_key: true |
+| Column           | Type        | Option                         |
+| ---------------- | ----------- | ------------------------------ |
+| seller_name      | string      | null: false                    |
+| price            | string      | null: false
+| category_id      | integer     | null: false                    |
+| item_state       | string      | null: false                    |
+| shipping_charges | string      | null: false                    |
+| shipping_area    | string      | null: false                    |
+| shipping_date    | string      | null: false                    |
+| user             | references  | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :users
-- has_many :purchase_items
-- has_one :purchase, through: :purchase_items
+- has_many :addresses_items
+- has_one :address, through: :addresses_items
 
-## purchasesテーブル
-
-| Column          | Type   | Option      |
-| --------------- | ------ | ----------- |
-| cregit_card     | string | null: false |
-| expiration_date | date   | null: false |
-| seculity        | string | null: false |
- 
- ### Association
-
- - has_many :purchase_items
- - belongs_to :item
- - has_many :addresses
-
-## purchase_itemsテーブル
-
-| Column  | Type    | option                         |
-| ------- | ------- | ------------------------------ |
-| price   | string  | null: false                    |
-| user_id | integer | null: false, foreign_key: true |
-| item_id | integer | null: false, foreign_key: true |
-
-### Association
-- belongs_to :item
-- belongs_to :purchase
 
 ## addressesテーブル
 
-| Column       | Type   | Option
-| ------------ | ------ | ---------
-| postal       | string | null: false
-| prefectures  | string | null: false
-| municipality | string | null: false
-| address      | string | null: false
-| building     | string |  
-| phone        | string | null: false
+| Column         | Type    | Option      |
+| -------------- | ------- | ----------- |
+| postal         | string  | null: false |
+| prefecture_id  | integer | null: false |
+| municipality   | string  | null: false |
+| address        | string  | null: false |
+| building       | string  |             |
+| phone          | string  | null: false |
 
 ### Association
 
-- belongs_to :puchase
 - belongs_to :user
+- has_many :addresses_items
+- belongs_to :item, through: :addresses_items
+
+## addresses_itemsテーブル
+
+| Column  | Type    | option                         |
+| ------- | ------- | ------------------------------ |
+| user    | integer | null: false, foreign_key: true |
+| item    | integer | null: false, foreign_key: true |
+
+### Association
+- belongs_to :item
+- belongs_to :address
