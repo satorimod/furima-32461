@@ -37,18 +37,17 @@
 - belongs_to :user
 - has_one :address_item
 
-
 ## addressesテーブル
 
-| Column              | Type        | Option                         |
-| ------------------- | ----------- | ------------------------------ |
-| postal              | string      | null: false                    |
-| prefecture_id       | integer     | null: false                    |
-| municipality        | string      | null: false                    |
-| address             | string      | null: false                    |
-| building            | string      |                                |
-| phone               | string      | null: false                    |
-| addresses_item      | references  | null: false, foreign_key: true |
+| Column         | Type       | Option                         |
+| -------------- | ---------- | ------------------------------ |
+| postal         | string     | null: false                    |
+| prefecrure_id  | integer    | null: false                    |
+| municipality   | string     | null: false                    |
+| address        | string     | null: false                    |
+| building       | string     |                                |
+| phone          | string     | null: false                    |   
+| addresses_item | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -56,12 +55,13 @@
 
 ## address_itemsテーブル
 
-| Column     | Type       | option                         |
-| ---------- | ---------- | ------------------------------ |
-| user       | references | null: false, foreign_key: true |
-| item       | references | null: false, foreign_key: true |
+| Column | Type       | Option                         |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
+
 - belongs_to :item
 - has_one :address
 - belongs_to :user

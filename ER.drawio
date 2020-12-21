@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 <mxfile host="65bd71144e" modified="2020-12-21T10:27:13.521Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.49.0 Chrome/83.0.4103.122 Electron/9.2.1 Safari/537.36" etag="QVputWmK8Hp6T7OYRjyl" version="13.10.0" type="embed">
+=======
+<mxfile host="65bd71144e" modified="2020-12-21T08:15:41.430Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.49.0 Chrome/83.0.4103.122 Electron/9.2.1 Safari/537.36" etag="-9VpdVvnqtJ_2eoIbfg4" version="13.10.0" type="embed">
+>>>>>>> Stashed changes
     <diagram id="2u54URwKtn0oQCWYSAu8" name="ページ1">
         <mxGraphModel dx="1465" dy="985" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
@@ -7,6 +11,7 @@
                 <mxCell id="yAP5g8DO2VciCxcq5tfG-16" value="usersテーブル" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
                     <mxGeometry x="30" y="380" width="160" height="170" as="geometry"/>
                 </mxCell>
+<<<<<<< Updated upstream
                 <mxCell id="yAP5g8DO2VciCxcq5tfG-17" value="last_name&#10;first_name&#10;furigana_last_name&#10;furigana_first_name&#10;email　&#10;encrypted_password&#10;dob&#10;nickname" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="yAP5g8DO2VciCxcq5tfG-16" vertex="1">
                     <mxGeometry y="30" width="160" height="140" as="geometry"/>
                 </mxCell>
@@ -20,6 +25,21 @@
                     <mxGeometry x="260" y="670" width="160" height="170" as="geometry"/>
                 </mxCell>
                 <mxCell id="yAP5g8DO2VciCxcq5tfG-24" value="postal&#10;prefecture_id&#10;municipality&#10;address&#10;building&#10;phone" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="yAP5g8DO2VciCxcq5tfG-23" vertex="1">
+=======
+                <mxCell id="yAP5g8DO2VciCxcq5tfG-17" value="last_name&#10;first_name&#10;furigana_last_name&#10;furigana_first_name&#10;email&#10;password&#10;password_confirmation&#10;encrypted_password&#10;dob" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="yAP5g8DO2VciCxcq5tfG-16" vertex="1">
+                    <mxGeometry y="30" width="160" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="yAP5g8DO2VciCxcq5tfG-20" value="itemsテーブル" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="380" width="160" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="yAP5g8DO2VciCxcq5tfG-21" value="seller_name&#10;price&#10;category_id&#10;item_state&#10;shipping_charges&#10;shipping_area&#10;shipping_date&#10;user_id" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="yAP5g8DO2VciCxcq5tfG-20" vertex="1">
+                    <mxGeometry y="30" width="160" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="yAP5g8DO2VciCxcq5tfG-23" value="address" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="840" width="160" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="yAP5g8DO2VciCxcq5tfG-24" value="postal&#10;prefectures&#10;municipality&#10;address&#10;building&#10;phone&#10;user_id&#10;items_id" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="yAP5g8DO2VciCxcq5tfG-23" vertex="1">
+>>>>>>> Stashed changes
                     <mxGeometry y="30" width="160" height="140" as="geometry"/>
                 </mxCell>
                 <mxCell id="yAP5g8DO2VciCxcq5tfG-40" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="yAP5g8DO2VciCxcq5tfG-17" target="yAP5g8DO2VciCxcq5tfG-21" edge="1">
@@ -34,10 +54,17 @@
                         <mxPoint x="460" y="720" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
+<<<<<<< Updated upstream
                 <mxCell id="2" value="addresses_items" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
                     <mxGeometry x="520" y="690" width="160" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="3" value="user_id&#10;item_id&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="2" vertex="1">
+=======
+                <mxCell id="2" value="purchase_items" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="760" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="user_id&#10;item_id&#10;price" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="2" vertex="1">
+>>>>>>> Stashed changes
                     <mxGeometry y="30" width="160" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="6" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="yAP5g8DO2VciCxcq5tfG-24" target="3" edge="1">
