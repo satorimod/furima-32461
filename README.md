@@ -9,22 +9,21 @@
 | furigana_last_name      | string | null: false               |
 | furigana_first_name     | string | null: false               | 
 | email                   | string | null: false, unique: true |
-| password                | string | null: false               |
-| password_confirmation   | string | null: false               |
 | encrypted_password      | string | null: false               |
 | dob                     | date   | null: false               |
+| nickname                | string | null: false               |
 
 ### Association
 
 - has_many :items
-- has_one :address
 
 ## itemsテーブル
 
 | Column           | Type        | Option                         |
 | ---------------- | ----------- | ------------------------------ |
-| seller_name      | string      | null: false                    |
-| price            | string      | null: false                    |
+| item_name        | integer     | null: false                    |
+| item_explanation | text        | null: false                    |
+| price            | integer     | null: false                    |
 | category_id      | integer     | null: false                    |
 | item_state       | string      | null: false                    |
 | shipping_charges | string      | null: false                    |
@@ -35,7 +34,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :addresses_item
+- has_one :address_item
 
 
 ## addressesテーブル
@@ -52,16 +51,16 @@
 ### Association
 
 - belongs_to :user
-- has_many :addresses_items
-- belongs_to :item, through: :addresses_items
+- belongs_to :addresses_item
 
-## addresses_itemsテーブル
+## address_itemsテーブル
 
-| Column  | Type    | option                         |
-| ------- | ------- | ------------------------------ |
-| user    | integer | null: false, foreign_key: true |
-| item    | integer | null: false, foreign_key: true |
+| Column     | Type    | option                         |
+| ---------- | ------- | ------------------------------ |
+| user_id    | integer | null: false, foreign_key: true |
+| item_id    | integer | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :item
-- belongs_to :address
+- has_one :address
+- has_one :user
