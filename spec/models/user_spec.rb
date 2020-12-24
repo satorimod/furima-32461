@@ -54,16 +54,31 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("First name can't be blank")
       end
+      it "first_nameが全角以外は登録できない" do
+        @user.first_name = "zennkaku"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name is invalid")
+      end
       it "furigana_last_nameがない場合登録できない" do
         @user.furigana_last_name = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Furigana last name can't be blank")
+      end
+      it "furigana_last_nameが全角以外は登録できない" do
+        @user.furigana_last_name = "ｱｲｳｴｵ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Furigana last name is invalid")
       end
       it "furigana_first_nameがない場合登録できない" do
         @user.furigana_first_name = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Furigana first name can't be blank")
       end        
+      it "furigana_first_nameが全角以外は登録できない" do
+        @user.furigana_first_name = "ｱｲｳｴｵ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Furigana first name is invalid")
+      end
       it "passwordが空では登録できない" do
         @user.password = ""
         @user.valid?
