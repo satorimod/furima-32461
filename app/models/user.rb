@@ -6,16 +6,16 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :address_items
-  
+  with_options presence: true do
+    validates :last_name, format: { with: /\A[ぁ-んァ-ン一-龥]/}
+    validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/}
+    validates :furigana_last_name, format: { with: /\A[ァ-ヶー－]+\z/ }
+    validates :furigana_first_name, format: { with: /\A[ァ-ヶー－]+\z/}
+    validates :dob
+  end
   validates :nickname, presence: true, length: { maximum: 10 }
-  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
-  validates :password, length: { minimum: 6 }, format: { with: VALID_PASSWORD_REGEX }
-  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
-  validates :password_confirmation,  length: { minimum: 5 }, format: { with: VALID_PASSWORD_REGEX }
-  validates :last_name, presence: true
-  validates :first_name, presence: true
-  validates :furigana_last_name, presence: true
-  validates :furigana_first_name, presence: true
-  validates :dob, presence: true
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
+  validates :password, length: { minimum: 6 }, format: { with: VALID_PASSWORD_REGEX, }
+  validates :password_confirmation,  length: { minimum: 5 }, format: { with: VALID_PASSWORD_REGEX, }
   
 end

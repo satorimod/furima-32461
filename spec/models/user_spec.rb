@@ -34,10 +34,20 @@ describe User do
         another_user.valid?
         expect(another_user.errors.full_messages).to include("Email has already been taken")
       end
+      it "@がない場合は登録できない" do
+        @user.email = "sample.com"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
+      end
       it "last_nameがない場合登録できない" do
         @user.last_name = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name can't be blank")
+      end
+      it "last_nameが全角以外は登録できない" do
+        @user.last_name = "zennkaku"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name is invalid")
       end
       it "first_nameがない場合登録できない" do
         @user.first_name = ""
@@ -69,6 +79,24 @@ describe User do
         @user.password_confirmation = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
+      it "passwordが半角英語のみは登録できない" do
+        @user.password = "password"
+        @user.password_confirmation = "password"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid", "Password confirmation is invalid")
+      end
+      it "passwordが数字のみは登録できない" do
+        @user.password = "123456"
+        @user.password_confirmation = "123456"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid", "Password confirmation is invalid")
+      end
+      it "passwordが全角英数混合は登録できない" do
+        @user.password = "AIU１２３"
+        @user.password_confirmation = "AIU１２３"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid", "Password confirmation is invalid")
       end
       it 'dobがない場合登録できない' do
         @user.dob = ""
