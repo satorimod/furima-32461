@@ -30,7 +30,7 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include("Category can't be blank")
         end
         it 'category_idが1では登録できないこと' do
-          @item.category_id = '1'
+          @item.category_id = 1
           @item.valid?
           expect(@item.errors.full_messages).to include('Category must be other than 1')
         end
@@ -40,7 +40,7 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include("Item state can't be blank")
         end
         it 'item_state_idが1では登録できないこと' do
-          @item.item_state_id = '1'
+          @item.item_state_id = 1
           @item.valid?
           expect(@item.errors.full_messages).to include('Item state must be other than 1')
         end
@@ -50,7 +50,7 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include("Shipping area can't be blank")
         end
         it 'shipping_area_idが１では登録できないこと' do
-          @item.shipping_area_id = '1'
+          @item.shipping_area_id = 1
           @item.valid?
           expect(@item.errors.full_messages).to include('Shipping area must be other than 1')
         end
@@ -60,7 +60,7 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include("Shipping charge can't be blank")
         end
         it 'shipping_charge_idが1では登録できないこと' do
-          @item.shipping_charge_id = '1'
+          @item.shipping_charge_id = 1
           @item.valid?
           expect(@item.errors.full_messages).to include('Shipping charge must be other than 1')
         end
@@ -70,7 +70,7 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include("Shipping date can't be blank")
         end
         it 'shipping_date_idが1では登録できないこと' do
-          @item.shipping_date_id = '1'
+          @item.shipping_date_id = 1
           @item.valid?
           expect(@item.errors.full_messages).to include('Shipping date must be other than 1')
         end
@@ -88,6 +88,11 @@ RSpec.describe Item, type: :model do
           @item.price = '100000000000000'
           @item.valid?
           expect(@item.errors.full_messages).to include('Price must be less than 9999999')
+        end
+        it "priceが全角数字では出品できないこと" do
+          @item.price = "１００００"
+          @item.valid? 
+         expect(@item.errors.full_messages).to include("Price is not a number")
         end
       end
     end
