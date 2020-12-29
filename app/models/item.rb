@@ -14,14 +14,14 @@ class Item < ApplicationRecord
     validates :explanation
     # validates :user
     validates :image
-    validates :price, numericality:{ greater_than:  300, less_than: 9999999 }, format: { with:/\A[0-9]+\z/ }
-      
-      with_options numericality: { other_than: 1 } do
-        validates :category_id
-        validates :item_state_id
-        validates :shipping_charge_id
-        validates :shipping_area_id
-        validates :shipping_date_id
-      end  
+    validates :price, numericality: { greater_than: 300, less_than: 9_999_999 }, format: { with: /\A[0-9]+\z/ }
+
+    with_options numericality: { other_than: 1 } do
+      validates :category_id
+      validates :item_state_id
+      validates :shipping_charge_id
+      validates :shipping_area_id
+      validates :shipping_date_id
+    end
   end
 end

@@ -1,3 +1,3 @@
-class ItemInformation 
+class ItemInformation
   include ActiveModel::Model
 end
