@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @items = Item.all.order('created_at DESC')
   end
