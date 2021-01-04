@@ -23,8 +23,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item =Item.find(params[:id])
-  end  
+    @item = Item.find(params[:id])
+  end
 
   def update
     @item = Item.find(params[:id])
@@ -32,8 +32,8 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       render :edit
-    end  
-  end  
+    end
+  end
 
   private
 
