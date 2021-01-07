@@ -8,16 +8,10 @@ class Order
     validates :municipality
     validates :address
     validates :phone, format: { with: /\A\d{11}\z/}
-    validates :address_item
   end
 
-    with_options foreign_key: true do
-      validates :user
-      validates :item
-    end
-
     def save
-      Address.create(postal: postal, prefecrure_id: prefecrure_id, municipality: municipality, address: address, phone: phone, address_item: address_item, user_id: user_id)
-      AdressItem.create(user: user, item: item)
+      AdressItem.create(user_id: user_id, item_id: item_id)
+      Address.create(postal: postal, prefecrure_id: prefecrure_id, municipality: municipality, address: address, phone: phone, address_item: address_item)
     end  
 end

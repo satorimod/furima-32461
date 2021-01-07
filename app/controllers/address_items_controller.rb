@@ -1,13 +1,14 @@
 class AddressItemsController < ApplicationController
   def index
-    @address_item = AddressItem.new
+    @order = Order.new
     @item = Item.find(params[:item_id])
   end
   
   def create
-    @address_item = AddressItem.new(address_item_params)
-    if @address_item.valid?
-      @address_item.save
+    @order = Order.new(address_item_params)
+    @item = Item.find(params[:item_id])
+    if @order.valid?
+      @order.save
       redirect_to root_path
     else
       render action: :index
@@ -17,6 +18,6 @@ class AddressItemsController < ApplicationController
   private
   
   def address_item_params
-    params.require(:address_item).permit(:user, :item, :postal, :prefecrure_id, :municipality, :address, :building, :phone, :address_item)
+    params.require(:order).permit(:user, :item, :postal, :prefecrure_id, :municipality, :address, :building, :phone, :address_item, :item_id, :user_id)
   end  
 end
