@@ -4,7 +4,7 @@ class Order
 
   with_options presence: true do
     validates :postal, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
-    validates :prefecrure_id, numericality: { other_than: 0, message: "can't be blank" }
+    validates :prefecrure_id, numericality: { other_than: 0,}
     validates :municipality
     validates :address
     validates :phone, format: { with: /\A\d{11}\z/}
