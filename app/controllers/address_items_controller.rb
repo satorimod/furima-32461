@@ -18,6 +18,6 @@ class AddressItemsController < ApplicationController
   private
   
   def address_item_params
-    params.require(:order).permit(:user, :item, :postal, :prefecrure_id, :municipality, :address, :building, :phone, :address_item, :item_id, :user_id)
+    params.require(:order).permit(:user, :item, :postal, :prefecture_id, :municipality, :address, :building, :phone, :address_item, :item_id, :user_id)
   end  
 end
