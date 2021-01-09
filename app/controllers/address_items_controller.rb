@@ -8,15 +8,11 @@ class AddressItemsController < ApplicationController
   end
   
   def create
+    binding.pry
     @order = Order.new(address_item_params)
     @item = Item.find(params[:item_id])
     if @order.valid?
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-      Payjp::Charge.create(
-        amount: Item.find(params[:item_id]).price,
-        card: address_item_params[:token],
-        currency: 'jpy'
-      )
+      pay_item
       @order.save
       redirect_to root_path
     else
@@ -27,6 +23,15 @@ class AddressItemsController < ApplicationController
   private
   
   def address_item_params
-    params.require(:order).permit(:user, :item, :postal, :prefecture_id, :municipality, :address, :building, :phone, :address_item, :item_id, :user_id).merge(token: params[:token])
+    params.require(:order).permit( :postal, :prefecture_id, :municipality, :address, :building, :phone, :token).merge(token: params[:token], item_id: params[:item_id], user_id: current_user.id)
+  end 
+  
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      amount: Item.find(params[:item_id]).price,
+      card: address_item_params[:token],
+      currency: 'jpy'
+    )
   end  
 end
