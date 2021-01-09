@@ -1,13 +1,12 @@
 class AddressItemsController < ApplicationController
+  before_action :index_create, only: [:index, :create]
   def index
     @order = Order.new
-    @item = Item.find(params[:item_id])
     redirect_to root_path if current_user == @item.user
   end
 
   def create
     @order = Order.new(address_item_params)
-    @item = Item.find(params[:item_id])
     if @order.valid?
       pay_item
       @order.save
@@ -20,7 +19,7 @@ class AddressItemsController < ApplicationController
   private
 
   def address_item_params
-    params.require(:order).permit(:postal, :prefecture_id, :municipality, :address, :building, :phone, :token).merge(
+    params.require(:order).permit(:postal, :prefecture_id, :municipality, :address, :building, :phone,).merge(
       token: params[:token], item_id: params[:item_id], user_id: current_user.id
     )
   end
@@ -33,4 +32,8 @@ class AddressItemsController < ApplicationController
       currency: 'jpy'
     )
   end
+
+  def index_create
+    @item = Item.find(params[:item_id])
+  end  
 end
