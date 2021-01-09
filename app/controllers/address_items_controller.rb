@@ -1,8 +1,8 @@
 class AddressItemsController < ApplicationController
   before_action :index_create, only: [:index, :create]
+  before_action :authenticate_user!, only: [:index]
   def index
     @order = Order.new
-    redirect_to root_path if current_user == @item.user
   end
 
   def create
