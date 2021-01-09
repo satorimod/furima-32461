@@ -3,6 +3,7 @@ class AddressItemsController < ApplicationController
   before_action :authenticate_user!, only: [:index]
   def index
     @order = Order.new
+    redirect_to root_path unless @item.address_item.blank?
   end
 
   def create
