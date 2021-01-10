@@ -4,6 +4,7 @@ class AddressItemsController < ApplicationController
   def index
     @order = Order.new
     redirect_to root_path unless @item.address_item.blank?
+    redirect_to root_path if current_user == @item.user
   end
 
   def create
