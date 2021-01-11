@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :address_items
   with_options presence: true do
     validates :nickname
-    validates :dob format : { message: "Date of Birth can't be blank"}
+    validates :dob
     with_options format: { with: /\A[ぁ-んァ-ン一-龥]/ } do
       validates :last_name
       validates :first_name
